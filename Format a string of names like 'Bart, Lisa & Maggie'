@@ -1,0 +1,36 @@
+# Given: an array containing hashes of names
+
+# Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.
+
+# Example:
+
+#! namelist([ {'name': 'Bart'}, {'name': 'Lisa'}, {'name': 'Maggie'} ])
+#! returns 'Bart, Lisa & Maggie'
+
+# namelist([ {'name': 'Bart'}, {'name': 'Lisa'} ])
+# returns 'Bart & Lisa'
+
+# namelist([ {'name': 'Bart'} ])
+# returns 'Bart'
+
+# namelist([])
+# returns ''
+
+def namelist(names):
+    list = []
+    string = ""
+    last = ""
+    amp = "&"
+    for i in names:
+        list.append(i["name"])
+    if len(list)==2:
+        string = list[0] + " " + amp + " " + list[1]
+        return string
+    if len(list) >2:
+        last = list[len(list)-1]
+        del list[-1]
+        list = ", ".join(list)
+        list = list + " " + amp + " " + last
+        return list
+    if len(list) < 2:
+        return "".join(list)
