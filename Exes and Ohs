@@ -21,4 +21,5 @@ def xo(s):
                 o.append(i)
         if len(x) == len(o):
             return True
-        return False
+        else:
+            return False
